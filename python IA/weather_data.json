@@ -1,0 +1,11 @@
+{
+    "main": {
+        "temp": 25.0,
+        "humidity": 70
+    },
+    "weather": [
+        {
+            "description": "Partly cloudy"
+        }
+    ]
+}
