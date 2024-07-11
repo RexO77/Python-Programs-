@@ -3,15 +3,15 @@ import numpy as np
 #Program to rotate, scale and translate an image
 image = cv2.imread('images/lena.jpg')
 angle = 45
-
+#scaling
 scale_x = 1.5
 scale_y = 1.5
-
+#translation
 tx = 50
 ty = 50
-
+#Get the height and width of the image
 height, width = image.shape[:2]
-
+#Get the rotation matrix
 rotation_matrix = cv2.getRotationMatrix2D((width/2, height/2), angle, 1)
 rotated_image = cv2.warpAffine(image, rotation_matrix, (width, height))
 scaled_image = cv2.resize(image, None, fx=scale_x, fy=scale_y)
