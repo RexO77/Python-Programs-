@@ -1,4 +1,4 @@
-import cv2
+import cv2 #image processing library
 face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
 image = cv2.imread('images/lena.jpg')
 grey = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
