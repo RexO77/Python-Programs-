@@ -9,3 +9,4 @@ cnt = contours[0]
 cv2.drawContours(image,[cnt],0,(0,255,0),3)
 cv2.imshow('Image',image)
 cv2.waitKey(0)
+cv2.destroyAllWindows()
