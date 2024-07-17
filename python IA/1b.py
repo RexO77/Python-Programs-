@@ -1,4 +1,4 @@
-print("Palindrome of Integers")
+print("Palindrome of Integers") # Palindrome 
 val = int(input("Enter a Integer :"))
 str_val = str(val)
 if str_val == str_val[::-1]:
