@@ -7,8 +7,8 @@ def check_website_status(url):
             url = 'http://' + url
         response = requests.get(url, timeout=5)
         status_code = response.status_code
+
         if response.history:
-            # Website was redirected
             redirected_urls = [resp.url for resp in response.history] + [response.url]
             redirect_chain = ' ➔ '.join(redirected_urls)
             if status_code == 200:
@@ -21,65 +21,44 @@ def check_website_status(url):
             else:
                 return f'Down (Status Code: {status_code})'
     except requests.exceptions.RequestException as e:
-        return f"Down ({e})"
+        return f'Down ({e})'
 
 def main():
-    st.set_page_config(page_title="Website Status Monitor", layout="wide")
-    st.title("🌐 Website Status Monitor")
+    st.set_page_config(page_title="Website Status Monitor", layout="centered")
+    
+    # Custom CSS
+    st.markdown("""
+        <style>
+        .stApp {
+            background-color: #f5f5f5;
+        }
+        div[data-testid="stToolbar"] {
+            display: none;
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
-    # Sidebar
-    st.sidebar.header("Settings")
-    websites_input = st.sidebar.text_area("Enter website URLs (one per line):", value="""https://nischalskanda.xyz
-http://nischalskanda.xyz
-nischalskanda.xyz""")
-    if st.sidebar.button('Check Websites'):
-        st.session_state['check_multiple'] = True
+    # Title and description
+    st.markdown("<h1 style='text-align: center; padding-top: 2rem;'>🌐 Website Status Monitor</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>Check if a website is up or down</p>", unsafe_allow_html=True)
 
-    # Floating input bar in the middle with check button
+    # Create three columns for centering
     col1, col2, col3 = st.columns([1,2,1])
-
+    
     with col2:
-        st.markdown("###")  # Add vertical space
-        st.markdown("###")
-        st.markdown("###")
-        # Centered container
-        with st.container():
-            col_input, col_button = st.columns([4,1])
-            with col_input:
-                website_input = st.text_input("", placeholder="Enter a website URL")
-            with col_button:
-                check_single = st.button("Check")
-        st.markdown("---")
-
-    status_placeholder = st.empty()
-
-    if check_single and website_input:
-        status = check_website_status(website_input.strip())
-        with status_placeholder.container():
-            if 'Up' in status:
-                st.success(f"✅ **{website_input}** is **Up**")
-                if 'Redirected' in status:
-                    st.info(f"🔀 {status.split('Up ')[1]}")
-            else:
-                st.error(f"❌ **{website_input}** is **{status}**")
-
-    if st.session_state.get('check_multiple'):
-        st.subheader("Website Statuses")
-        websites = [url.strip() if url.strip().startswith(('http://', 'https://')) else 'http://' + url.strip() for url in websites_input.split('\n') if url.strip()]
-        statuses = {}
-        with st.spinner('Checking website statuses...'):
-            for url in websites:
-                status = check_website_status(url)
-                statuses[url] = status
-        with status_placeholder.container():
-            for url, status in statuses.items():
+        # Input field and button
+        website_input = st.text_input("", placeholder="Enter website URL", label_visibility="collapsed")
+        if st.button("Check Status", use_container_width=True):
+            if website_input:
+                status = check_website_status(website_input.strip())
                 if 'Up' in status:
-                    st.success(f"✅ **{url}** is **Up**")
+                    st.success(f"✅ **{website_input}** is **Up**")
                     if 'Redirected' in status:
                         st.info(f"🔀 {status.split('Up ')[1]}")
                 else:
-                    st.error(f"❌ **{url}** is **{status}**")
-        st.session_state['check_multiple'] = False
+                    st.error(f"❌ **{website_input}** is **{status}**")
+            else:
+                st.warning("Please enter a website URL")
 
 if __name__ == "__main__":
     main()
