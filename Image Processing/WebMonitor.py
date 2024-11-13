@@ -7,6 +7,12 @@ from matplotlib.patches import Circle
 import numpy as np
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
+import tkinter as tk
+from tkinter import ttk
+import threading
+from PIL import Image, ImageTk
+import io
+import time
 
 class WebsiteMonitor:
     def __init__(self, urls, history_size=30):
@@ -121,12 +127,111 @@ class WebsiteMonitor:
                            cache_frame_data=False)
         plt.show()
 
-# Usage
+class WebsiteStatusGUI:
+    def __init__(self, websites):
+        self.websites = websites
+        self.window = tk.Tk()
+        self.window.title("Website Status Monitor")
+        self.window.geometry("400x500")
+        self.window.configure(bg='#2c2c2c')
+        
+        # Header
+        header = tk.Label(self.window, 
+                         text="Website Status Monitor",
+                         fg='white',
+                         bg='#2c2c2c',
+                         font=('Arial', 16, 'bold'))
+        header.pack(pady=20)
+        
+        # Main container
+        self.container = ttk.Frame(self.window)
+        self.container.pack(pady=20, expand=True, fill='both')
+        
+        # Configure style
+        style = ttk.Style()
+        style.configure('Status.TFrame', background='#2c2c2c')
+        style.configure('Website.TLabel', 
+                       background='#2c2c2c',
+                       foreground='white',
+                       font=('Arial', 10))
+        
+        # Website status frames
+        self.status_frames = {}
+        self.status_labels = {}
+        for website in websites:
+            frame = ttk.Frame(self.container, style='Status.TFrame')
+            frame.pack(pady=10, fill='x', padx=20)
+            
+            # Website name
+            name = website.split('//')[1][:30]
+            label = ttk.Label(frame, 
+                            text=name,
+                            style='Website.TLabel')
+            label.pack(side='left')
+            
+            # Status text
+            status_label = tk.Label(frame,
+                                  text="Checking...",
+                                  bg='#2c2c2c',
+                                  fg='#808080',
+                                  font=('Arial', 10))
+            status_label.pack(side='right')
+            
+            self.status_frames[website] = frame
+            self.status_labels[website] = status_label
+        
+        # Refresh button
+        self.refresh_btn = tk.Button(self.window,
+                                   text="Refresh",
+                                   command=self.check_status,
+                                   bg='#404040',
+                                   fg='white',
+                                   activebackground='#505050',
+                                   activeforeground='white',
+                                   relief='flat',
+                                   pady=5,
+                                   padx=20)
+        self.refresh_btn.pack(pady=20)
+        
+    def check_single_status(self, url):
+        try:
+            response = requests.get(url, timeout=5)
+            return url, True if response.status_code == 200 else False
+        except:
+            return url, False
+            
+    def check_status(self):
+        self.refresh_btn.config(state='disabled', text="Checking...")
+        
+        def update_status(url, is_up):
+            color = '#00ff00' if is_up else '#ff0000'
+            text = "ACTIVE" if is_up else "DOWN"
+            self.status_labels[url].configure(fg=color, text=text)
+            
+        def enable_refresh():
+            self.refresh_btn.config(state='normal', text="Refresh")
+            # Schedule next auto-refresh
+            self.window.after(30000, self.check_status)
+        
+        with ThreadPoolExecutor(max_workers=len(self.websites)) as executor:
+            for url, status in executor.map(self.check_single_status, self.websites):
+                self.window.after(0, update_status, url, status)
+        
+        self.window.after(0, enable_refresh)
+    
+    def start(self):
+        self.check_status()
+        self.window.mainloop()
+
+# Usage (keeping your original websites)
 websites = [
     "https://www.nischalskanda.xyz",
     "https://notfedex.000webhostapp.com/",
-    "https://www.chat.com"
+    "https://www.chatgpt.com"
 ]
 
 monitor = WebsiteMonitor(websites)
 monitor.start_monitoring()
+
+app = WebsiteStatusGUI(websites)
+app.start()
