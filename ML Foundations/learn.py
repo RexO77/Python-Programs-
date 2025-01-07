@@ -14,8 +14,12 @@ print("Count of 2:", count_of_2)
 index_of_2 = tuples.index(2)
 print("Index of 2:", index_of_2)
 
-file = open('file.txt', 'w') # Create a file
-file.write('Hello, World!') # Write to the file
-file.close() # Close the file
-content = file.read() # Read the file
-content
+# Correct file handling
+with open('file.txt', 'w') as file:
+    file.write('Hello, World!')
+    file.write('This is the new line')  # Write to file
+
+# Open file again for reading
+with open('file.txt', 'r') as file:
+    content = file.read()  # Read the content
+    print("File content:", content)
