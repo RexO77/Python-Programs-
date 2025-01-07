@@ -13,3 +13,7 @@ print("Count of 2:", count_of_2)
 # Find the index of 2 and print the result
 index_of_2 = tuples.index(2)
 print("Index of 2:", index_of_2)
+
+file = open('file.txt', 'w') # Create a file
+file.write('Hello, World!') # Write to the file
+
