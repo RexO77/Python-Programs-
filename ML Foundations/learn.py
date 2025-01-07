@@ -16,4 +16,6 @@ print("Index of 2:", index_of_2)
 
 file = open('file.txt', 'w') # Create a file
 file.write('Hello, World!') # Write to the file
-file.read() # Read the file
+file.close() # Close the file
+content = file.read() # Read the file
+content
