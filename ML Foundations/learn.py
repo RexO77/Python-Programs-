@@ -23,3 +23,7 @@ with open('file.txt', 'w') as file:
 with open('file.txt', 'r') as file:
     content = file.read()  # Read the content
     print("File content:", content)
+
+d = {'k1':{'k2':'hello'}}
+# Grab 'hello'
+d['k1']['k2']
