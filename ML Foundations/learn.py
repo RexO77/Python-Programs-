@@ -34,3 +34,8 @@ l_two = [1,2,{'k1':4}]
 
 # True or False?
 l_one[2][0] >= l_two[2]['k1']
+# Getting a little tricker
+d = {'k1':[{'nest_key':['this is deep',['hello']]}]}
+
+#Grab hello
+d['k1'][0]['nest_key'][1][0]
