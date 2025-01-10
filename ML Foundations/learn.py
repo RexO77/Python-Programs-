@@ -39,3 +39,6 @@ d = {'k1':[{'nest_key':['this is deep',['hello']]}]}
 
 #Grab hello
 d['k1'][0]['nest_key'][1][0]
+
+dict = {'test': 1, 'test2': 2}
+print(dict['test'])
