@@ -44,3 +44,9 @@ dict = {'test': 1, 'test2': 2}
 print(dict['test'])
 my_dict['key3'][0].upper()
 print(my_dict)
+while True:
+    try:
+        x = int(input("Please enter a number: "))
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
