@@ -50,3 +50,8 @@ while True:
         break
     except ValueError:
         print("Oops!  That was no valid number.  Try again...")
+
+for i in range(5):
+    print(i)
+    if i == 3:
+        break
