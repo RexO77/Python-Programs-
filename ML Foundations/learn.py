@@ -1,57 +1,22 @@
-my_dict = {'one': 1, 'two': 2, 'three': 3}
-print(my_dict['one'])
-print(my_dict['two'])
-tuples = ('Hello, World', 2)
-
-# Print the tuple
-print("Tuple:", tuples)  
-
-# Count occurrences of 2 and print the result
-count_of_2 = tuples.count(2)
-print("Count of 2:", count_of_2)  
-
-# Find the index of 2 and print the result
-index_of_2 = tuples.index(2)
-print("Index of 2:", index_of_2)
-
-# Correct file handling
-with open('file.txt', 'w') as file:
-    file.write('Hello, World!')
-    file.write('This is the new line')  # Write to file
-
-# Open file again for reading
-with open('file.txt', 'r') as file:
-    content = file.read()  # Read the content
-    print("File content:", content)
-
-d = {'k1':{'k2':'hello'}}
-# Grab 'hello'
-d['k1']['k2']
-
-# two nested lists
-l_one = [1,2,[3,4]]
-l_two = [1,2,{'k1':4}]
-
-# True or False?
-l_one[2][0] >= l_two[2]['k1']
-# Getting a little tricker
-d = {'k1':[{'nest_key':['this is deep',['hello']]}]}
-
-#Grab hello
-d['k1'][0]['nest_key'][1][0]
-
-dict = {'test': 1, 'test2': 2}
-print(dict['test'])
-my_dict['key3'][0].upper()
-print(my_dict)
+#fizzbuzz
+# 1. Print numbers from 1 to 100
+# 2. For multiples of 3, print "Fizz" instead of the number
+# 3. For multiples of 5, print "Buzz" instead of the number
+# 4. For multiples of 3 and 5, print "FizzBuzz" instead of the number
+# 5. For all other numbers, print the number
 while True:
     try:
-        x = int(input("Please enter a number: "))
-        break
+        num = int(input("Enter a number: "))
+        if num % 3 == 0 and num % 5 == 0:
+            print("FizzBuzz")
+        elif num % 3 == 0:
+            print("Fizz")
+        elif num % 5 == 0:
+            print("Buzz")
+        else:
+            print(num)
     except ValueError:
-        print("Oops!  That was no valid number.  Try again...")
-
-for i in range(5):
-    print(i)
-    if i == 3:
+        print("Please enter a valid number")
+        continue
+    else:
         break
