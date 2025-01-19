@@ -81,3 +81,11 @@ def reverse(x):
 #Example 1:
 #Input: x = 123
 #Output: 321
+#Example 2:
+#Input: x = -123
+#Output: -321
+def reverse(x):
+    if x < 0:
+        return -1 * int(str(x)[:0:-1]) if -1 * int(str(x)[:0:-1]) > -2**31 else 0
+    else:
+        return int(str(x)[::-1]) if int(str(x)[::-1]) < 2**
