@@ -73,4 +73,13 @@ def reverse(x):
         return -1 * int(str(x)[:0:-1]) if -1 * int(str(x)[:0:-1]) > -2**31 else 0
     else:
         return int(str(x)[::-1]) if int(str(x)[::-1]) < 2**31 - 1 else 0
-    
+
+with open('file.txt', 'r') as file:
+    data = file.read().replace('\n', '')
+    print(data)
+
+#Machnine learning basics
+#Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
