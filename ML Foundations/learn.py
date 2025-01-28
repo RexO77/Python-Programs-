@@ -67,6 +67,3 @@ import sklearn as sk
 dataset = pd.read_csv('Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
-#Taking care of missing data
-from sklearn.impute import SimpleImputer
-imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
