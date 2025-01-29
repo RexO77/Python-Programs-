@@ -72,3 +72,4 @@ y = dataset.iloc[:, -1].values
 #conda activate myenv
 #conda deactivate
 #conda remove -n myenv --all
+#conda list
