@@ -69,7 +69,3 @@ X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 #learning Virtaul env
 #conda create -n myenv python=3.6
-#conda activate myenv
-#conda deactivate
-#conda remove -n myenv --all
-#conda list
