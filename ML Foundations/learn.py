@@ -43,6 +43,11 @@ model = LinearRegression()
 # This step calculates the optimal slope and intercept
 model.fit(X_train, y_train)
 
+# After model training, add:
+print(f"Model Coefficients (Slope): {model.coef_[0][0]:.3f}")
+print(f"Model Intercept: {model.intercept_[0]:.3f}")
+print(f"R² Score: {model.score(X_test, y_test):.3f}")
+
 # Model Prediction and Evaluation
 # -----------------------------
 # Use the trained model to make predictions on test data
