@@ -66,6 +66,7 @@ plt.scatter(X_test, y_test, color='blue', label='Actual Data')
 # Plot the regression line using predicted values
 plt.plot(X_test, y_pred, color='red', linewidth=2, label='Regression Line')
 
+
 # Add labels and title to make the plot more informative
 plt.xlabel('Feature')
 plt.ylabel('Target')
