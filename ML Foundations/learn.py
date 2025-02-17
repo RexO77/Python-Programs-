@@ -14,7 +14,7 @@ np.random.seed(42)
 # Generate synthetic feature data (x)
 # Creates 100 random numbers between 0 and 2 (multiplied by 2)
 # reshape into column vector with shape (100,1)
-x = 2 * np.random.rand(100, 1)
+x = 2 * np.random.rand(1000, 1)
 
 # Generate synthetic target data (y)
 # Using the equation: y = 4 + 3x + random_noise
