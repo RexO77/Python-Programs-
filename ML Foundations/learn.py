@@ -78,3 +78,4 @@ plt.show()
 # Save the model to a file
 
 
+#learning numy and pandas
