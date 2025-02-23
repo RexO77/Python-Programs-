@@ -75,7 +75,5 @@ plt.title('Simple Linear Regression')
 # Display the plot
 plt.show()
 
-# Save the model to a file
-
 
 #learning numy and pandas
