@@ -79,3 +79,4 @@ plt.show()
 #learning numy and pandas
 #numpy is a library for numerical operations and array manipulation
 #pandas is a library for data manipulation and analysis
+#matplotlib is a library for data visualization
