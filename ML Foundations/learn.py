@@ -3,8 +3,6 @@ PYTHON AND MACHINE LEARNING FOUNDATIONS
 ======================================
 A step-by-step tutorial covering Python basics to ML implementation
 """
-
-
 #############################
 # PART 1: PYTHON BASICS
 #############################
