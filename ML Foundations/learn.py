@@ -346,4 +346,3 @@ plt.title('Simple Linear Regression')
 
 # Display the plot
 plt.show()
-
