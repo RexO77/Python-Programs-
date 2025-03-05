@@ -231,7 +231,6 @@ new_house = pd.DataFrame({
     'has_pool': [0],
     'total_rooms': [6.5]  # 4 + 2.5
 })
-
 # Scale the numerical features
 new_house[numerical_features] = scaler.transform(new_house[numerical_features])
 
