@@ -182,6 +182,7 @@ plt.ylabel('Frequency')
 
 plt.tight_layout()
 # We'll show all plots at the end to avoid interrupting the flow
+
 #############################
 # PART 5: MACHINE LEARNING BASICS
 #############################
