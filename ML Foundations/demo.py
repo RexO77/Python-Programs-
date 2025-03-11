@@ -251,3 +251,4 @@ print("\nPrice Predictions:")
 print(f"Linear Regression: ${linear_new_pred:.2f}")
 print(f"Random Forest: ${rf_new_pred:.2f}")
 print("\n Analysis Complete! ")
+#turn tv off
