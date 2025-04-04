@@ -343,6 +343,5 @@ plt.xlabel('Feature')
 plt.ylabel('Target')
 plt.legend()
 plt.title('Simple Linear Regression')
-
 # Display the plot
 plt.show()
