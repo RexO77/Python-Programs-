@@ -4,7 +4,6 @@ MACHINE LEARNING FOUNDATIONS: A STRUCTURED LEARNING PATH
 This tutorial covers essential Python skills and libraries needed for machine learning,
 progressing from basic concepts to practical ML implementation.
 """
-
 #############################
 # SECTION 1: PYTHON ESSENTIALS FOR ML
 #############################
