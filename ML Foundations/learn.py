@@ -68,7 +68,6 @@ print("-" * 60)
 # PART A: NUMPY - THE NUMERICAL FOUNDATION OF ML
 print("\nPART A: NUMPY - THE NUMERICAL FOUNDATION OF ML")
 print("-" * 50)
-
 import numpy as np
 
 # Creating arrays - ML data is typically stored in arrays
